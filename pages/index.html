@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -10,7 +11,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Plan My Day</title>
+    <title>Plan My Day | Weather App</title>
   </head>
   <body>
     <main>
@@ -18,12 +19,47 @@
         <h1>Plain My Day🌤️</h1>
         <input type="text" name="" id="city_input" />
         <button id="submit_btn" type="button">Get Weather</button>
-        <div id="weather_report"></div>
+        <div id="weather_report">Enter a city and hit search!</div>
+        <div style="display: none" id="loading" class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </section>
       <section>
         <h2>Features</h2>
+        <ul>
+          <li>🔍 Search for the current weather by entering a city name.</li>
+          <li>📍 Retrieves accurate coordinates using a geocoding API.</li>
+          <li>🌡️ Displays the current temperature in Fahrenheit (°F).</li>
+          <li>💨 Shows the current wind speed in miles per hour (mph).</li>
+          <li>🌙 Indicates whether it's currently day or night.</li>
+          <li>
+            🌫️ Retrieves the latest air quality data (PM10) with real-time
+            classification:
+            <ul>
+              <li>🟢 Good (0-20 µg/m³)</li>
+              <li>🟡 Fair (21-40 µg/m³)</li>
+              <li>🟠 Moderate (41-60 µg/m³)</li>
+              <li>🔴 Poor (61-100 µg/m³)</li>
+              <li>🟣 Very Poor (101-150 µg/m³)</li>
+              <li>⚫ Extremely Poor (151+ µg/m³)</li>
+            </ul>
+          </li>
+          <li>
+            📅 Provides a multi-day forecast with:
+            <ul>
+              <li>🔼 Daily maximum temperatures (°F).</li>
+              <li>🔽 Daily minimum temperatures (°F).</li>
+              <li>📅 Corresponding dates for each forecasted day.</li>
+            </ul>
+          </li>
+        </ul>
       </section>
     </main>
+    <footer id="footer"></footer>
     <script src="../js/index.js"></script>
   </body>
 </html>
