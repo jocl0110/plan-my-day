@@ -1,5 +1,4 @@
-// Elements
-
+// Variables for the Elements
 const inputEl = document.getElementById("city_input");
 const weatherReportEl = document.getElementById("weather_report");
 const messageEl = document.getElementById("message");
@@ -7,15 +6,9 @@ const loadingEl = document.getElementById("loading");
 const footerEl = document.getElementById("footer");
 const formEl = document.getElementById("form");
 
-// Footer
-const year = new Date().getFullYear();
-footerEl.innerHTML = `<p>&copy;Jose Izquierdo ${year}</p>
-<a href="https://www.linkedin.com/in/jose-luis-izquierdo-hernandez-938064245" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-<a href="https://github.com/jocl0110" target="_blank"><i class="fa-brands fa-github"></i></a>
-<a href="https://x.com/jocl0110" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>`;
-
 formEl.addEventListener("submit", async (event) => {
   event.preventDefault();
+  // Remove whitespaces
   const city = inputEl.value.trim();
   messageEl.classList.remove("error", "warning");
   if (!city) {
@@ -38,7 +31,7 @@ formEl.addEventListener("submit", async (event) => {
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`
     );
     const geoData = await geoResponse.json();
-    console.log("Coordinates", geoData);
+
     if (!geoData.results || geoData.results.length === 0) {
       loadingEl.style.display = "none";
       messageEl.style.display = "block";
@@ -53,7 +46,6 @@ formEl.addEventListener("submit", async (event) => {
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&daily=temperature_2m_max,temperature_2m_min&timezone=auto`
     );
     const weatherData = await weatherResponse.json();
-    console.log("Weather Data", weatherData);
 
     const temp = weatherData.current_weather.temperature;
     const windSpeed = weatherData.current_weather.windspeed;
@@ -78,7 +70,6 @@ formEl.addEventListener("submit", async (event) => {
       `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&hourly=pm10`
     );
     const airQualityData = await airQualityResponse.json();
-    console.log("Air Quality", airQualityData);
 
     // Get the latest value
     const pm10Values = airQualityData.hourly.pm10;
@@ -99,9 +90,6 @@ formEl.addEventListener("submit", async (event) => {
     } else {
       airQualityStatus = "⚫ Extremely Poor";
     }
-    // setTimeout(() => {
-    //   loadingEl.style.display = "none";
-    // }, 2000);
     weatherReportEl.style.display = "block";
     weatherReportEl.innerHTML = `
       <h3>Weather Report for ${name}, ${admin1}, ${country}</h3>
@@ -130,3 +118,10 @@ formEl.addEventListener("submit", async (event) => {
     loadingEl.style.display = "none";
   }
 });
+
+// Footer
+const year = new Date().getFullYear();
+footerEl.innerHTML = `<p>&copy;Jose Izquierdo ${year}</p>
+<a href="https://www.linkedin.com/in/jose-luis-izquierdo-hernandez-938064245" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+<a href="https://github.com/jocl0110" target="_blank"><i class="fa-brands fa-github"></i></a>
+<a href="https://x.com/jocl0110" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>`;
