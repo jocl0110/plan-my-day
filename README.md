@@ -21,7 +21,7 @@ A simple weather application that allow users to check weather conditions for th
 1. Open your terminal and navigate to the folder where you want to store the project
 2. Clone the repository running:
 
-`sh git clone https://github.com/jocl0110/plan-my-day.git in your terminal`
+`git clone https://github.com/jocl0110/plan-my-day.git in your terminal`
 
 - Or download it as a Zip file from the same link.
 
