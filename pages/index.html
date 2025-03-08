@@ -11,15 +11,26 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Plan My Day | Weather App</title>
   </head>
   <body>
-    <main>
-      <section>
+    <main id="app-container">
+      <section id="header">
         <h1>Plain My Day🌤️</h1>
-        <input type="text" name="" id="city_input" />
-        <button id="submit_btn" type="button">Get Weather</button>
+        <form id="form">
+          <input class="form_element" type="text" name="" id="city_input" />
+          <button id="submit_btn" class="form_element" type="submit">
+            Get <i class="fa-solid fa-cloud"></i>
+          </button>
+        </form>
         <div id="weather_report">Enter a city and hit search!</div>
+        <div id="message"></div>
         <div style="display: none" id="loading" class="spinner">
           <div class="rect1"></div>
           <div class="rect2"></div>
@@ -28,9 +39,9 @@
           <div class="rect5"></div>
         </div>
       </section>
-      <section>
-        <h2>Features</h2>
-        <ul>
+      <section class="features_section">
+        <h2 class="features_title">Features</h2>
+        <ul class="features_list">
           <li>🔍 Search for the current weather by entering a city name.</li>
           <li>📍 Retrieves accurate coordinates using a geocoding API.</li>
           <li>🌡️ Displays the current temperature in Fahrenheit (°F).</li>
@@ -38,23 +49,13 @@
           <li>🌙 Indicates whether it's currently day or night.</li>
           <li>
             🌫️ Retrieves the latest air quality data (PM10) with real-time
-            classification:
-            <ul>
-              <li>🟢 Good (0-20 µg/m³)</li>
-              <li>🟡 Fair (21-40 µg/m³)</li>
-              <li>🟠 Moderate (41-60 µg/m³)</li>
-              <li>🔴 Poor (61-100 µg/m³)</li>
-              <li>🟣 Very Poor (101-150 µg/m³)</li>
-              <li>⚫ Extremely Poor (151+ µg/m³)</li>
-            </ul>
+            classification
           </li>
+
           <li>
-            📅 Provides a multi-day forecast with:
-            <ul>
-              <li>🔼 Daily maximum temperatures (°F).</li>
-              <li>🔽 Daily minimum temperatures (°F).</li>
-              <li>📅 Corresponding dates for each forecasted day.</li>
-            </ul>
+            📅 Provides a multi-day forecast with detailed information about
+            upcoming temperature conditions. This feature allows users to plan
+            ahead by offering a forecast for several days.
           </li>
         </ul>
       </section>
